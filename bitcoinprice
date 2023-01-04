@@ -1,0 +1,15 @@
+import requests
+
+# Make a GET request to the CoinMarketCap API to retrieve the current Bitcoin price
+response = requests.get("https://api.coinmarketcap.com/v1/ticker/bitcoin/")
+
+# Check the status code of the response to ensure the request was successful
+if response.status_code == 200:
+  # Parse the JSON data from the response
+  bitcoin_data = response.json()[0]
+
+  # Print the current Bitcoin price
+  print(f"The current price of Bitcoin is: ${bitcoin_data['price_usd']}")
+else:
+  # Print an error message if the request was not successful
+  print("An error occurred while retrieving the Bitcoin price.")
